@@ -33,7 +33,7 @@ post '/hello-database/' do
     	db = SQLite3::Database.open "users.db"
     	db.execute "CREATE TABLE IF NOT EXISTS People(Id INTEGER PRIMARY KEY, 
         Name TEXT, Greeting TEXT)"
-        db.execute "INSERT INTO People VALUES(1,#{name},#{greeting}, name, greeting)"
+        db.execute( "INSERT INTO People (Name, Greeting) VALUES('#{name}', '#{greeting}')")
     puts "Your data has been entered into the database!"
 
     rescue SQLite3::Exception => e 
